@@ -26,6 +26,8 @@ contains the answer.
 <!-- e.g. "One of my questions is about a topic only two documents mention, so
      I expect that one to be hard." -->
 
+     I picked 4 of 5 because my five questions cover different parts of the campus-life corpus, including housing, courses, and dining. I think the system should retrieve the answer for most questions, while allowing one question to be missed.
+
 ---
 
 ## 2. Every answer names a source
@@ -35,6 +37,8 @@ Every answer the system produces names at least one source document.
 **Why this target:**
 <!-- Why all five and not four? What about your setup makes that achievable —
      or what would have to go wrong for it not to be? -->
+
+     I picked 5 of 5 because an answer should be traceable back to a document in my corpus. When I tested the housing lottery question, the system already identified admin_housing_lottery.txt as the source, so I expect every answer to provide a source.
 
 ---
 
@@ -52,6 +56,8 @@ in at least 4 of 5 tries.
 **Why this target:**
 <!-- What did your distances look like when you set the cutoff in Milestone 4?
      Was there a clean gap, or did the two groups overlap? -->
+
+     I picked 4 of 5 because the five out-of-scope questions are about subjects that are clearly unrelated to my campus-life documents. I expect the relevance gate to reject most of them, while allowing one possible mistake because semantic retrieval can sometimes find an unrelated chunk that looks similar.
 
 ---
 
@@ -73,6 +79,8 @@ in at least 4 of 5 tries.
 
 **Why this target:**
 
+I picked 4 of 5 because my corpus has many short 1–3 paragraph posts, and the useful information is often contained in one sentence. I want the chunks to preserve that information instead of cutting a sentence or idea in half.
+
 
 
 ---
@@ -90,8 +98,7 @@ in at least 4 of 5 tries.
 
 
 **Why this target:**
-
-
+I picked 4 of 5 because my five questions cover different parts of my corpus, and I want to make sure the system does more than retrieve relevant documents. The answer should actually use the retrieved information to answer the question.
 
 ---
 
