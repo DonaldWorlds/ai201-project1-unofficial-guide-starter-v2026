@@ -255,9 +255,14 @@ I used AI to help me reason through the retrieval and chunking parts of the proj
 
 
 
-The main issue I found was at the **chunking** stage. The starter's fixed 800-character window produced 88 chunks from 88 documents, so almost every `campus_life` post stayed as one chunk even when the post contained several separate pieces of information, such as dining wait times, hours, and costs. This could make retrieval less precise because a chunk could match a question based on only one part of the post while also containing unrelated information.
+I did not have any misses in the evaluation runs. All five criteria were MET, so I do not have a failed question that I can honestly assign to a specific pipeline stage.
 
-I did not find a loading problem because all 88 documents were loaded. I also did not have evidence of an embedding or generation problem from the baseline runs. The main change I wanted to test was therefore making the chunks follow paragraph and sentence boundaries instead of treating each short post as one large fixed-size window.
+The results do show one area that could still be improved: **chunking**. The starter's fixed 800-character approach produced 88 chunks from 88 documents, meaning most `campus_life` posts remained as one chunk even when they contained multiple separate pieces of information. My concern is that larger chunks can contain unrelated information, which may make retrieval less precise. However, because my retrieval and answer criteria still passed, I cannot call this a demonstrated failure.
+
+I also did not find evidence of a loading, embedding, retrieval, or generation failure in these evaluation runs. The system successfully loaded all 88 documents, retrieved information containing the expected answers, identified sources, rejected the out-of-corpus questions, and produced answers that directly addressed the test questions.
+
+Because I missed nothing, I should also examine whether my targets were too safe. Criterion 4 is the one I would tighten. Instead of checking five sample chunks manually, I would require the chunking test to verify that a larger sample of chunks preserves complete sentences and useful information without unnecessary unrelated material. This would make the criterion better at detecting an actual chunking problem.
+
 
 
 
