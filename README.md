@@ -253,7 +253,7 @@ I used AI to help me reason through the retrieval and chunking parts of the proj
 
      Milestone 3. -->
 
-     ## **Diagnoses**
+
 
 The main issue I found was at the **chunking** stage. The starter's fixed 800-character window produced 88 chunks from 88 documents, so almost every `campus_life` post stayed as one chunk even when the post contained several separate pieces of information, such as dining wait times, hours, and costs. This could make retrieval less precise because a chunk could match a question based on only one part of the post while also containing unrelated information.
 
