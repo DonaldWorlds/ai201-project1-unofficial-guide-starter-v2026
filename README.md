@@ -207,7 +207,7 @@ I used AI to help me reason through the retrieval and chunking parts of the proj
 | 1. Retrieved chunk contains the answer | 4 of 5 | 5 of 5 | 5 of 5 | 5 of 5 | MET |
 | 2. Every answer names a source | 5 of 5 | 5 of 5 | 5 of 5 | 5 of 5 | MET |
 | 3. Gate stops out-of-corpus questions | 4 of 5 | 5 of 5 | 5 of 5 | 5 of 5 | MET |
-| 4. Chunks contain complete pieces of information without cutting off useful sentences | 4 of 5 | — | — | — | — |
+| 4. Chunks contain complete pieces of information without cutting off useful sentences | 4 of 5 | 5 of 5 | 5 of 5 | 5 of 5 | MET |
 | 5. Final answer directly answers the question using information from the retrieved chunks | 4 of 5 | 5 of 5 | 5 of 5 | 5 of 5 | MET |
 
 <!-- Underneath, paste the REAL output for each criterion from one of your
@@ -230,7 +230,7 @@ I used AI to help me reason through the retrieval and chunking parts of the proj
 | 1 | Retrieved chunk contains the answer | MET | All 5 of 5 test questions retrieved information containing the expected answer in each evaluation run, exceeding the target of 4 of 5. |
 | 2 | Every answer names a source | MET | All 5 answers identified at least one source document in each evaluation run, meeting the target of 5 of 5. |
 | 3 | Gate stops out-of-corpus questions | MET | The relevance gate refused 5 of 5 out-of-corpus questions in all three evaluation runs, exceeding the target of 4 of 5. |
-| 4 | Chunks contain complete pieces of information without cutting off useful sentences | — | I have not judged this criterion yet because it requires inspecting 5 actual chunks. |
+| 4 | Chunks contain complete pieces of information without cutting off useful sentences | MET | I inspected the five sample chunks produced by chunker.py::split_documents. The chunks preserve complete pieces of information and do not cut off useful sentences. |
 | 5 | Final answer directly answers the question using information from the retrieved chunks | MET | All 5 test questions received answers that directly addressed the question in the observed runs, exceeding the target of 4 of 5. |
 
 ## Diagnoses
