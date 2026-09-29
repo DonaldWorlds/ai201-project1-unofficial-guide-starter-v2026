@@ -171,11 +171,9 @@ Source: admin_housing_lottery.txt
      Milestone 5. -->
 
 
-I used AI to help me reason through the retrieval and chunking parts of the project, but I tested the suggestions against the actual project instead of copying them without checking.
+In this unit, I used AI to help inspect the results and compare the before and after runs. It helped me identify that the chunking change increased the number of chunks from 88 to 117, while the five-question pass/fail results stayed the same. I used that comparison to avoid claiming that the change improved the system when the evaluation did not show an improvement.
 
-1. Chunking: I asked AI to help me think through why the starter chunking approach might not be giving the best retrieval results. The starter used a fixed character-based approach, so I changed split_documents() to be paragraph-aware and to keep sentences together when possible. I tested the new chunker and got 117 chunks instead of the starter's 88, with an average chunk size of about 238 characters.
-
-2. Retrieval and grounding: I used AI to help inspect the retrieval distances and decide whether top-k and the relevance cutoff needed to change. We compared the five in-scope questions with five out-of-scope questions. The in-scope best distances ranged from 0.1729 to 0.4233, while the out-of-scope best distances ranged from 0.8246 to 0.9340. Based on that gap, I kept the cutoff at 0.6 and top-k at 5. I also checked the GROUNDING_INSTRUCTION and kept it unchanged because it already required the model to use only the provided documents, avoid guessing, and name the source file.
+I also used AI to help organize the Milestone 3 diagnosis and check that the Milestone 4 write-up clearly connected the change to the evaluation results. The final conclusions were based on my actual project runs and the assignment criteria.
 
 <!-- ── Stretch features ─────────────────────────────────────────────────────
      Doing one? Say so here BEFORE you start. A feature this README never
@@ -320,9 +318,10 @@ The retrieval distances changed for some questions, but the pass/fail results di
      not.
 
      Milestone 5. -->
-None of the five acceptance criteria are still missed. The final checks reached 5 of 5 for each criterion across the three evaluation runs, and the relevance gate refused all 5 out-of-corpus questions in each run.
 
-There are still things I could improve, such as adding automated scoring with scorer.py and testing more questions, but those are not failures of the five criteria I set for this milestone. I stopped here because the current evaluation showed that the system met the targets consistently.
+None of the five acceptance criteria are currently missed in the final evaluation. The system answered all five in-scope questions, named sources, refused all five out-of-scope questions, and passed the manual chunk-completeness check.
+
+There are still limitations. The evaluation only uses five in-scope questions, so the results are not enough to show that the system works reliably across the entire corpus. Criterion 4 is also judged manually rather than by an automated scorer. In the next unit, I would expand the evaluation set and make the chunk-completeness check more repeatable. I stopped here because the Milestone 4 experiment did not produce a measurable pass/fail improvement, and the assignment's required evaluation was already complete.
 
 ## What I'd Do Differently
 
@@ -331,7 +330,5 @@ There are still things I could improve, such as adding automated scoring with sc
 
      Milestone 5. -->
 
-I would make the evaluation criteria more specific about how the results are measured. For example, Criterion 4 checks whether chunks contain complete pieces of information, but that required manual inspection because run_eval.py does not score it yet. I would define a more repeatable way to check chunk completeness so the result does not depend as much on manual judgment.
-
-I would also include more than five in-scope questions if I were continuing the project. The five questions covered different parts of the corpus, but a larger test set would give more evidence that the retrieval and relevance cutoff work beyond these specific questions.
+I would write Criterion 4 more specifically in the next unit. "Chunks contain complete pieces of information without cutting off useful sentences" requires a manual judgment, so different evaluations could interpret it differently. I would define a clearer test for whether a chunk preserves the information needed to answer a question. I would also use more than five in-scope questions so the evaluation gives stronger evidence about the system's overall retrieval quality. As well as finishs my project early so I wont get 503 errors during the day.
 
