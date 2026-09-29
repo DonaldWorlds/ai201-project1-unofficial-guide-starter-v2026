@@ -280,6 +280,10 @@ The starter produced one chunk for nearly every document, even when a post conta
 
 ### Run Log — After
 
+**Before run:** `results/run_2026-09-28_1956_before.md`
+
+**After run:** `results/run_2026-09-28_2018_after.md`
+
 <!-- Same format, same five criteria, three runs each.
      `python run_eval.py --label after` -->
 
@@ -300,13 +304,12 @@ The starter produced one chunk for nearly every document, even when a post conta
 
      Milestone 4. -->
 
-This addressed the chunking problem I identified earlier, where the starter's fixed 800-character windows kept almost every document as one chunk even when the document contained separate pieces of information.
+The chunking change did not improve the measured acceptance criteria. Before the change, the starter chunker produced 88 chunks from 88 documents. After the change, my chunker produced 117 chunks from the same 88 documents.
 
-I kept top-k at 5 and kept the relevance cutoff at 0.6. The retrieval test showed a clear separation between the questions covered by the corpus and the out-of-scope questions. The five in-scope questions had best distances from 0.1729 to 0.4233, while the five out-of-scope questions had best distances from 0.8246 to 0.9340. The 0.6 cutoff falls between these groups.
+The before run had 5 of 5 in-scope questions answered across all three runs and refused 5 of 5 out-of-scope questions. The after run had the same results: 5 of 5 in-scope questions answered across all three runs and 5 of 5 out-of-scope questions refused.
 
-The grounding test also showed that the existing GROUNDING_INSTRUCTION was strict enough. The housing lottery answer used information from admin_housing_lottery.txt and named the source instead of using information from the unrelated retrieved chunks. I therefore did not change the grounding instruction.
+The retrieval distances changed for some questions, but the pass/fail results did not change. Therefore, based on this five-question evaluation, the new chunking strategy did not improve the measured criteria. I kept the change because it was the one improvement tested for Milestone 4 and the experiment gave me a measurable result rather than assuming the change helped.
 
-The Milestone 4 changes did not increase the five-question answer success rate because the system was already answering all five correctly. Instead, the retrieval testing confirmed that the current top-k and cutoff separate covered questions from out-of-scope questions, while the grounding test confirmed that answers stay tied to the retrieved documents.
 
 ## What's Still Broken
 
